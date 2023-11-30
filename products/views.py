@@ -4,7 +4,7 @@ from products.models import Product, ProductCategory
 
 def index(request):
     context = {
-        'title': 'Store',
+        'title': 'Clothes',
     }
     return render(
         request,
@@ -15,7 +15,7 @@ def index(request):
 
 def products(request):
     context = {
-        'title': 'Store - Каталог',
+        'title': 'Clothes - Каталог',
         'products': Product.objects.all(),
         'categories': ProductCategory.objects.all(),
     }
