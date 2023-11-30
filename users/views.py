@@ -5,6 +5,7 @@ from django.urls import reverse
 
 from users.models import User
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
+from products.models import Basket
 
 
 def login(request):
@@ -53,8 +54,11 @@ def profile(request):
     else:
         form = UserProfileForm(instance=request.user)
     context = {
+        'baskets': Basket.objects.filter(user=request.user),
         'title': 'Clothes - Профиль',
-        'form': form
+        'form': form,
+    #     'total_sum': total_sum,
+    #     'total_quantity': total_quantity
     }
     return render(
         request,
@@ -66,3 +70,5 @@ def profile(request):
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('index'))
+
+
