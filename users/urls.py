@@ -5,6 +5,6 @@ from users.views import login, registration
 app_name = 'users'
 
 urlpatterns = [
-    path('lorin/', login, name='login'),
+    path('login/', login, name='login'),
     path('registration/', registration, name='registration'),
 ]
